@@ -27,10 +27,12 @@ resource "aws_elasticache_replication_group" "main" {
   description                = "${var.name}-${var.env}-elasticache"
   engine                     = "redis"
   engine_version             = var.engine_version
-  node_type                  = var.node_type
   port                       = var.port
-  parameter_group_name       = aws_elasticache_parameter_group.main.name
+
   automatic_failover_enabled = true
+  node_type                  = var.node_type
+  parameter_group_name       = aws_elasticache_parameter_group.main.name
+
   num_node_groups            = var.num_node_groups
   replicas_per_node_group    = var.replicas_per_node_group
   subnet_group_name          = aws_elasticache_subnet_group.main.name
