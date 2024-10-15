@@ -8,7 +8,7 @@ variable "vpc_id" {}
 variable "allow_db_cidr" {}
 variable "engine_version" {}
 variable "kms_arn" {}
-variable "port_no" {
+variable "port" {
   default = 6379
 }
 variable "replicas_per_node_group" {}
