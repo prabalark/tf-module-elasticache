@@ -30,8 +30,8 @@ resource "aws_elasticache_replication_group" "main" {
   engine                     = "redis"
   engine_version             = var.engine_version
   port                       = var.port
-  num_node_groups            = var.num_node_groups
-  node_type                  = var.node_type
+  num_node_groups            = var.num_node_groups #instance_count
+  node_type                  = var.node_type #instance_class
   replicas_per_node_group    = var.replicas_per_node_group
 
   parameter_group_name       = aws_elasticache_parameter_group.main.name
