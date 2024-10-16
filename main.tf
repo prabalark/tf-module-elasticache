@@ -23,18 +23,18 @@ resource "aws_security_group" "main" {
 }
 
 resource "aws_elasticache_replication_group" "main" {
-  replication_group_id       = "${var.name}-${var.env}-elasticache"
+  replication_group_id       = "${var.name}-${var.env}-elasticache" #like clusterid
   description                = "${var.name}-${var.env}-elasticache"
+  automatic_failover_enabled = true
+
   engine                     = "redis"
   engine_version             = var.engine_version
   port                       = var.port
-
-  automatic_failover_enabled = true
-  node_type                  = var.node_type
-  parameter_group_name       = aws_elasticache_parameter_group.main.name
-
   num_node_groups            = var.num_node_groups
+  node_type                  = var.node_type
   replicas_per_node_group    = var.replicas_per_node_group
+
+  parameter_group_name       = aws_elasticache_parameter_group.main.name
   subnet_group_name          = aws_elasticache_subnet_group.main.name
   security_group_ids         = [aws_security_group.main.id]
 
