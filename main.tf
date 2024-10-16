@@ -4,7 +4,7 @@ resource "aws_security_group" "main" {
   vpc_id      = var.vpc_id
 
   ingress {
-    description = "REDIS"
+    description = "elasticache"
     from_port   = var.port
     to_port     = var.port
     protocol    = "tcp"
